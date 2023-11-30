@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/weatherbackground"
+    tools:context=".WeatherHomePage">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/idcountry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/alice"
+                android:text="Location"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/searchbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/searchbar"
+                android:drawableRight="@drawable/search"
+                android:gravity="center"
+                android:hint="Enter city name "
+                android:padding="12dp"
+                android:textColor="#3A3A3A"
+                android:textColorHint="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold|italic"
+                app:layout_constraintTop_toBottomOf="@+id/txt_country" />
+
+
+            <ImageView
+                android:id="@+id/idweatherimg"
+                android:layout_width="190dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                app:srcCompat="@drawable/show" />
+
+            <TextView
+                android:id="@+id/iddescriptiontxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:fontFamily="@font/alice"
+                android:text="Description"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/txtcelcius2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/alegreya_bold"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="50sp" />
+
+            <TextView
+                android:id="@+id/iddateandtimetxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/alice"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="19sp" />
+
+            <Button
+                android:id="@+id/idbtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:backgroundTint="#4CAF50"
+                android:text="Weather Forecast Details"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/search_bar"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="10dp"
+                android:alignmentMode="alignMargins"
+                android:columnCount="2"
+                android:columnOrderPreserved="false"
+                android:rowCount="2">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/idpressureview"
+                    android:layout_width="190dp"
+                    android:layout_height="155dp"
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:layout_margin="8dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="100dp"
+                    app:elevation="4dp">
+
+                    <TextView
+                        android:id="@+id/idpressure"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|center"
+                        android:layout_marginTop="18dp"
+                        android:fontFamily="@font/alice"
+                        android:gravity="center"
+                        android:text="Pressure"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="normal|bold"
+                        app:autoSizeTextType="none" />
+
+                    <TextView
+                        android:id="@+id/idpressuredetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="25dp"
+                        android:gravity="center"
+                        android:text="Additional Text"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/pressure_img"
+                        android:layout_width="76dp"
+                        android:layout_height="69dp"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:layout_gravity="bottom|center"
+                        android:layout_marginBottom="8dp"
+                        android:src="@drawable/wind" />
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/idtempcard"
+                    android:layout_width="190dp"
+                    android:layout_height="155dp"
+                    android:layout_margin="8dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="100dp"
+                    app:elevation="4dp">
+
+                    <TextView
+                        android:id="@+id/idtemplbl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|center"
+                        android:layout_marginTop="18dp"
+                        android:fontFamily="@font/alice"
+                        android:gravity="center"
+                        android:text="Temperature"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="normal|bold" />
+
+                    <TextView
+                        android:id="@+id/idtempdetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="25dp"
+                        android:gravity="center"
+                        android:text="Additional Text"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/temp_image"
+                        android:layout_width="76dp"
+                        android:layout_height="69dp"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:layout_gravity="bottom|center"
+                        android:layout_marginBottom="8dp"
+                        android:src="@drawable/temperature" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/idhumiditycard"
+                    android:layout_width="190dp"
+                    android:layout_height="155dp"
+                    android:layout_margin="8dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="100dp"
+                    app:elevation="4dp">
+
+                    <TextView
+                        android:id="@+id/idhumiditydetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="25dp"
+                        android:gravity="center"
+                        android:text="Additional Text"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/lblHumidity"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|center"
+                        android:layout_marginTop="18dp"
+                        android:fontFamily="@font/alice"
+                        android:gravity="center"
+                        android:text="Humidity"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="normal|bold" />
+
+                    <ImageView
+                        android:id="@+id/humidity_image"
+                        android:layout_width="76dp"
+                        android:layout_height="69dp"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:layout_gravity="bottom|center"
+                        android:layout_marginBottom="8dp"
+                        android:src="@drawable/humidity" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/idweatherviewimg"
+                    android:layout_width="190dp"
+                    android:layout_height="155dp"
+                    android:layout_margin="8dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="100dp"
+                    app:elevation="4dp">
+
+                    <TextView
+                        android:id="@+id/idairspeedtxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|center"
+                        android:layout_marginTop="18dp"
+                        android:fontFamily="@font/alice"
+                        android:gravity="center"
+                        android:text="Wind Speed"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="normal|bold" />
+
+                    <TextView
+                        android:id="@+id/idairspeeddetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="25dp"
+                        android:gravity="center"
+                        android:text="Additional Text"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/wind_img"
+                        android:layout_width="76dp"
+                        android:layout_height="69dp"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:layout_gravity="bottom|center"
+                        android:layout_marginBottom="8dp"
+                        android:src="@drawable/wind" />
+
+                </androidx.cardview.widget.CardView>
+
+
+            </GridLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
