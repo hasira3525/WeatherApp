@@ -72,7 +72,6 @@ class WeatherForeCast : AppCompatActivity() {
         txtDate4 = findViewById(R.id.textDate4)
         textDescription4 = findViewById(R.id.textDescription4)
         imageView4 = findViewById(R.id.imageView4)
-
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         searchBar = findViewById(R.id.searchbar)
 
@@ -121,7 +120,7 @@ class WeatherForeCast : AppCompatActivity() {
                 .addOnFailureListener { e ->
                     Toast.makeText(
                         this,
-                        "Error getting location: ${e.message}",
+                        "Error Getiing Location: ${e.message}",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -150,7 +149,7 @@ class WeatherForeCast : AppCompatActivity() {
                 } catch (e: Exception) {
                     Toast.makeText(
                         this,
-                        "Error parsing forecast information",
+                        "Error Parsing Forecast Details",
                         Toast.LENGTH_SHORT
                     ).show()
                     e.printStackTrace()
@@ -159,7 +158,7 @@ class WeatherForeCast : AppCompatActivity() {
             { error ->
                 Toast.makeText(
                     this,
-                    "Error loading forecast information",
+                    "Error Loading Forecast Details",
                     Toast.LENGTH_SHORT
                 ).show()
                 error.printStackTrace()
@@ -190,7 +189,7 @@ class WeatherForeCast : AppCompatActivity() {
                 txtLocation.text = location.locality ?: location.adminArea ?: "Unknown"
                 getForecastWeatherData(latitude, longitude)
             } else {
-                Toast.makeText(this, "City not found", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "City Not Found", Toast.LENGTH_SHORT).show()
             }
         } catch (e: IOException) {
             e.printStackTrace()
@@ -211,28 +210,28 @@ class WeatherForeCast : AppCompatActivity() {
             val icon = weatherArray.getJSONObject(0).getString("icon")
 
             val forecastDate = currentDate.clone() as Calendar
-            forecastDate.add(Calendar.DAY_OF_MONTH, i) // Adjusted to get the forecast for the respective day
+            forecastDate.add(Calendar.DAY_OF_MONTH, i)
 
             val date = SimpleDateFormat("EEE, MMM d", Locale.getDefault()).format(forecastDate.time)
 
             when (i) {
                 1 -> {
-                    txtDate1.text = "$date: ${temperature}°C"
+                    txtDate1.text = "$date: ${temperature/10}°C"
                     textDescription1.text = weather
                     loadWeatherIcon(icon, imageView1)
                 }
                 2 -> {
-                    txtDate2.text = "$date: ${temperature}°C"
+                    txtDate2.text = "$date: ${temperature/10}°C"
                     textDescription2.text = weather
                     loadWeatherIcon(icon, imageView2)
                 }
                 3 -> {
-                    txtDate3.text = "$date: ${temperature}°C"
+                    txtDate3.text = "$date: ${temperature/10}°C"
                     textDescription3.text = weather
                     loadWeatherIcon(icon, imageView3)
                 }
                 4 -> {
-                    txtDate4.text = "$date: ${temperature}°C"
+                    txtDate4.text = "$date: ${temperature/10}°C"
                     textDescription4.text = weather
                     loadWeatherIcon(icon, imageView4)
                 }
@@ -240,14 +239,13 @@ class WeatherForeCast : AppCompatActivity() {
         }
     }
 
+
     private fun parseCityForecastData(data: JSONObject) {
         try {
             val forecastList = data.getJSONArray("list")
 
-            // Adjusted to start from the current date when searching for a particular city
             val currentDate = Calendar.getInstance()
 
-            // Assuming here that the user is interested in the next three days' forecast
             for (i in 0 until 3) {
                 val forecastItem = forecastList.getJSONObject(i * 8)
                 val main = forecastItem.getJSONObject("main")
@@ -257,25 +255,24 @@ class WeatherForeCast : AppCompatActivity() {
                     Locale.getDefault())
                 val icon = weatherArray.getJSONObject(0).getString("icon")
 
-                // Corrected this part to advance the date correctly
                 val forecastDate = currentDate.clone() as Calendar
-                forecastDate.add(Calendar.DAY_OF_MONTH, i + 1) // Adjusted to get the forecast for the respective day
+                forecastDate.add(Calendar.DAY_OF_MONTH, i + 1)
 
                 val date = SimpleDateFormat("EEE, MMM d", Locale.getDefault()).format(forecastDate.time)
 
                 when (i) {
                     0 -> {
-                        txtDate1.text = "$date: ${temperature}°C"
+                        txtDate1.text = "$date: ${temperature/10}°C"
                         textDescription1.text = weather
                         loadWeatherIcon(icon, imageView1)
                     }
                     1 -> {
-                        txtDate2.text = "$date: ${temperature}°C"
+                        txtDate2.text = "$date: ${temperature/10}°C"
                         textDescription2.text = weather
                         loadWeatherIcon(icon, imageView2)
                     }
                     2 -> {
-                        txtDate3.text = "$date: ${temperature}°C"
+                        txtDate3.text = "$date: ${temperature/10}°C"
                         textDescription3.text = weather
                         loadWeatherIcon(icon, imageView3)
                     }

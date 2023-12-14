@@ -89,7 +89,6 @@ class WeatherHomePage : AppCompatActivity() {
     }
 
 
-
     private fun onSearchButtonClick() {
         val cityName = findViewById<EditText>(R.id.searchbar).text.toString()
         if (cityName.isNotEmpty()) {
@@ -146,7 +145,7 @@ class WeatherHomePage : AppCompatActivity() {
             { data ->
                 try {
                     val cityName = data.getString("name")
-                    val temperature = data.getJSONObject("main").getDouble("temp")
+                    val temperature = data.getJSONObject("main").getDouble("temp")/10
                     val pressure = data.getJSONObject("main").getDouble("pressure")
                     val humidity = data.getJSONObject("main").getDouble("humidity")
                     val windSpeed = data.getJSONObject("wind").getDouble("speed")
